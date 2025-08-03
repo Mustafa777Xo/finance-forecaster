@@ -69,7 +69,7 @@ export const ForecastDisplay: React.FC<ForecastDisplayProps> = ({ forecastData }
     <div className="w-full max-w-6xl mx-auto space-y-6">
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="card">
+        <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Total Transactions</p>
@@ -81,7 +81,7 @@ export const ForecastDisplay: React.FC<ForecastDisplayProps> = ({ forecastData }
           </div>
         </div>
 
-        <div className="card">
+        <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Avg Daily Forecast</p>
@@ -93,7 +93,7 @@ export const ForecastDisplay: React.FC<ForecastDisplayProps> = ({ forecastData }
           </div>
         </div>
 
-        <div className="card">
+        <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Forecast Period</p>
@@ -105,7 +105,7 @@ export const ForecastDisplay: React.FC<ForecastDisplayProps> = ({ forecastData }
           </div>
         </div>
 
-        <div className="card">
+        <div className="bg-white rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Total Forecast</p>
@@ -202,7 +202,7 @@ export const ForecastDisplay: React.FC<ForecastDisplayProps> = ({ forecastData }
 
       {/* Data Summary */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="card">
+        <div className="bg-white rounded-lg shadow-md p-6">
           <h4 className="font-semibold text-gray-900 mb-3">Data Summary</h4>
           <div className="space-y-3">
             <div className="flex justify-between">
@@ -231,7 +231,7 @@ export const ForecastDisplay: React.FC<ForecastDisplayProps> = ({ forecastData }
           </div>
         </div>
 
-        <div className="card">
+        <div className="bg-white rounded-lg shadow-md p-6">
           <h4 className="font-semibold text-gray-900 mb-3">Model Information</h4>
           <div className="space-y-3">
             <div className="flex justify-between">

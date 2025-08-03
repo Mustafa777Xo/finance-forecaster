@@ -56,8 +56,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
       {/* File Upload Area */}
       <div
         {...getRootProps()}
-        className={`upload-area cursor-pointer ${
-          isDragActive ? 'dragover' : ''
+        className={`border-2 border-dashed transition-colors p-8 rounded-lg text-center cursor-pointer ${
+          isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-400'
         } ${uploadStatus.status === 'uploading' ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         <input {...getInputProps()} />

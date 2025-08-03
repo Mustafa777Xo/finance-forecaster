@@ -134,7 +134,7 @@ function App() {
             <div className="text-center mt-6">
               <button
                 onClick={resetApp}
-                className="btn-secondary"
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg transition-colors"
               >
                 Upload New File
               </button>
