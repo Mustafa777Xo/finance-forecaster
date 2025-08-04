@@ -35,14 +35,14 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
     <div className="w-full max-w-2xl mx-auto">
       {/* Forecast Days Selector */}
       <div className="mb-6">
-        <label htmlFor="forecast-days" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="forecast-days" className="block text-sm font-medium text-slate-200 mb-2">
           Forecast Period
         </label>
         <select
           id="forecast-days"
           value={forecastDays}
           onChange={(e) => setForecastDays(Number(e.target.value))}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 bg-slate-700 border border-slate-600 text-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           disabled={uploadStatus.status === 'uploading'}
         >
           <option value={7}>7 days</option>
@@ -56,8 +56,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
       {/* File Upload Area */}
       <div
         {...getRootProps()}
-        className={`border-2 border-dashed transition-colors p-8 rounded-lg text-center cursor-pointer ${
-          isDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300 hover:border-blue-400'
+        className={`border-2 border-dashed transition-colors p-8 rounded-lg text-center cursor-pointer bg-slate-800 ${
+          isDragActive ? 'border-blue-400 bg-slate-700' : 'border-slate-600 hover:border-blue-500'
         } ${uploadStatus.status === 'uploading' ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         <input {...getInputProps()} />
@@ -65,22 +65,22 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
         <div className="flex flex-col items-center space-y-4">
           {uploadStatus.status === 'uploading' ? (
             <>
-              <Loader2 className="w-12 h-12 text-blue-500 animate-spin" />
-              <p className="text-lg font-medium text-gray-700">Processing your data...</p>
-              <p className="text-sm text-gray-500">Training model and generating forecast</p>
+              <Loader2 className="w-12 h-12 text-blue-400 animate-spin" />
+              <p className="text-lg font-medium text-slate-200">Processing your data...</p>
+              <p className="text-sm text-slate-400">Training model and generating forecast</p>
             </>
           ) : (
             <>
-              <Upload className="w-12 h-12 text-gray-400" />
+              <Upload className="w-12 h-12 text-slate-400" />
               <div className="text-center">
                 {isDragActive ? (
-                  <p className="text-lg font-medium text-blue-600">Drop your CSV file here</p>
+                  <p className="text-lg font-medium text-blue-400">Drop your CSV file here</p>
                 ) : (
                   <>
-                    <p className="text-lg font-medium text-gray-700">
+                    <p className="text-lg font-medium text-slate-200">
                       Drag & drop your transaction CSV file here
                     </p>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p className="text-sm text-slate-400 mt-1">
                       or click to browse files
                     </p>
                   </>
@@ -90,7 +90,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
           )}
 
           {acceptedFiles.length > 0 && uploadStatus.status !== 'uploading' && (
-            <div className="flex items-center space-x-2 text-sm text-green-600">
+            <div className="flex items-center space-x-2 text-sm text-green-400">
               <FileText className="w-4 h-4" />
               <span>{acceptedFiles[0].name}</span>
             </div>
@@ -99,11 +99,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
       </div>
 
       {/* Requirements */}
-      <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-        <h4 className="font-medium text-blue-900 mb-2">CSV File Requirements:</h4>
-        <ul className="text-sm text-blue-800 space-y-1">
-          <li>• Must include columns: <code className="bg-blue-100 px-1 rounded">date</code> and <code className="bg-blue-100 px-1 rounded">amount</code></li>
-          <li>• Optional: <code className="bg-blue-100 px-1 rounded">category</code> column</li>
+      <div className="mt-4 p-4 bg-blue-950 border border-blue-800 rounded-lg">
+        <h4 className="font-medium text-blue-200 mb-2">CSV File Requirements:</h4>
+        <ul className="text-sm text-blue-300 space-y-1">
+          <li>• Must include columns: <code className="bg-blue-900 px-1 rounded">date</code> and <code className="bg-blue-900 px-1 rounded">amount</code></li>
+          <li>• Optional: <code className="bg-blue-900 px-1 rounded">category</code> column</li>
           <li>• Date format: YYYY-MM-DD or MM/DD/YYYY</li>
           <li>• Amount should be positive numbers</li>
         </ul>
@@ -111,26 +111,26 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload, uploadStat
 
       {/* Status Messages */}
       {uploadStatus.status === 'error' && (
-        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+        <div className="mt-4 p-4 bg-red-950 border border-red-800 rounded-lg">
           <div className="flex items-center space-x-2">
-            <AlertCircle className="w-5 h-5 text-red-500" />
+            <AlertCircle className="w-5 h-5 text-red-400" />
             <div>
-              <h4 className="font-medium text-red-900">Upload Failed</h4>
-              <p className="text-sm text-red-700 mt-1">{uploadStatus.message}</p>
+              <h4 className="font-medium text-red-200">Upload Failed</h4>
+              <p className="text-sm text-red-300 mt-1">{uploadStatus.message}</p>
             </div>
           </div>
         </div>
       )}
 
       {uploadStatus.status === 'success' && (
-        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+        <div className="mt-4 p-4 bg-green-950 border border-green-800 rounded-lg">
           <div className="flex items-center space-x-2">
-            <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-              <div className="w-2 h-2 bg-white rounded-full"></div>
+            <div className="w-5 h-5 bg-green-400 rounded-full flex items-center justify-center">
+              <div className="w-2 h-2 bg-slate-900 rounded-full"></div>
             </div>
             <div>
-              <h4 className="font-medium text-green-900">Success!</h4>
-              <p className="text-sm text-green-700 mt-1">
+              <h4 className="font-medium text-green-200">Success!</h4>
+              <p className="text-sm text-green-300 mt-1">
                 Your forecast has been generated. Scroll down to view results.
               </p>
             </div>

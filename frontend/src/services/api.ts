@@ -1,7 +1,7 @@
 // API service for Finance Forecaster
 
 import axios from 'axios';
-import type { ForecastResponse, ApiError } from '../types/api';
+import type { ForecastResponse } from '../types/api';
 
 // Configure axios instance
 const api = axios.create({
@@ -61,7 +61,7 @@ export class ForecastAPI {
    */
   static async listModels(): Promise<{ models: Array<{ filename: string; created_at: string; size_kb: number }> }> {
     const response = await api.get('/api/models');
-    return response.data;
+    return response.data as { models: Array<{ filename: string; created_at: string; size_kb: number }> };
   }
 
   /**
@@ -69,7 +69,7 @@ export class ForecastAPI {
    */
   static async healthCheck(): Promise<{ status: string; timestamp: string; message: string }> {
     const response = await api.get('/');
-    return response.data;
+    return response.data as { status: string; timestamp: string; message: string };
   }
 }
 
