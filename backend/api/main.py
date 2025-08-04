@@ -9,7 +9,7 @@ from typing import Any, Dict, List
 
 import joblib
 import pandas as pd
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -64,7 +64,7 @@ async def health_check():
 
 
 @app.post("/api/upload-and-forecast", response_model=ForecastResponse)
-async def upload_and_forecast(file: UploadFile = File(...), days: int = 30):
+async def upload_and_forecast(file: UploadFile = File(...), days: int = Form(30)):
     """
     Upload CSV file and generate financial forecast
 
@@ -200,7 +200,7 @@ async def list_models():
 
 @app.post("/api/forecast-with-model")
 async def forecast_with_saved_model(
-    file: UploadFile = File(...), model_filename: str = None, days: int = 30
+    file: UploadFile = File(...), model_filename: str = Form(None), days: int = Form(30)
 ):
     """Generate forecast using a pre-trained model"""
 
